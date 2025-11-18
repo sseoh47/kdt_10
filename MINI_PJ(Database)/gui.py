@@ -180,9 +180,7 @@ with left_col:
                 </div>
                 """, unsafe_allow_html=True
             )
-        else:
-            # 검색 결과가 없을 때 메시지 출력
-            st.warning("검색 결과가 없습니다. 입력된 값이 틀린 것 같습니다.")
+            
 
     # 여백 추가
     st.markdown("<hr><br>", unsafe_allow_html=True)
