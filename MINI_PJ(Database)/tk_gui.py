@@ -10,7 +10,7 @@ from analyze_logic import (
     load_and_process_data,
     CarPoint,
 )
-
+import pyperclip
 
 # ============================================
 # 🖥️ 통합 애플리케이션 클래스
@@ -367,6 +367,7 @@ class CanAnalyzerIntegratedApp:
             "Unit",
             "Message",
         )
+
         self.tree = ttk.Treeview(frame, columns=columns, show="headings")
         self.tree.pack(fill="both", expand=True, padx=10, pady=10)
 
@@ -382,8 +383,36 @@ class CanAnalyzerIntegratedApp:
         # 나머지 컬럼 너비는 기본값
 
         self.search_entry.bind("<Return>", lambda event: self.search_signals_treeview())
+        ## ==========================================================
+        # self.tree.bind("<ButtonRelease-1>", self.copy_selected_item)
 
-        
+    ## ===================================================================================
+    ## 변환 함수(X)
+    ## ===================================================================================
+    # def copy_selected_item(self,event):
+    # # 클릭된 항목의 정보를 가져옵니다.
+    #     selected_item = self.tree.selection()[0]
+    #     item_values = self.tree.item(selected_item, "values")
+
+    #     # 선택된 항목을 원하는 형식으로 변환합니다.
+    #     signal_name = item_values[1]  # Name
+    #     start_bit = item_values[2]  # StartBit
+    #     bit_length = item_values[3]  # BitLength
+    #     byte_order = item_values[4]  # ByteOrder
+    #     factor = item_values[6]  # Factor
+    #     offset = item_values[7]  # Offset
+    #     min_val = item_values[8]  # Min
+    #     max_val = item_values[9]  # Max
+    #     unit = item_values[10]  # Unit
+    #     message = item_values[11]  # Message
+
+    #     # "SG_" 형식으로 변환
+    #     formatted_signal = f"SG_ {signal_name} : {start_bit}|{bit_length}@{byte_order} {factor} {offset} [{min_val}|{max_val}] \"\"  {message}"
+
+    #     # 클립보드에 복사
+    #     pyperclip.copy(formatted_signal)
+    #     print(f"Copied to clipboard: {formatted_signal}")  # 확인용 출력
+
     """시그널 상세 검색 탭의 검색 로직 (tk3.py 기반)"""
     def search_signals_treeview(self):
 
